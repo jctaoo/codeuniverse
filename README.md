@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./images/codeuniverse.png" width="250" /><br/>
+  <img src="./images/codeuniverse.png" width="200" /><br/>
   <strong>Start and Connect your workspace in seconds. ⚡️</strong><br/>
   <strong>Your GitHub Codespaces Alternatie.</strong>
 </p>
