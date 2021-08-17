@@ -1,11 +1,11 @@
 import React from "react";
 
-function AdminPage() {
+function UserPage() {
   return (
     <div id="admin">
-      <h1>Admin</h1>
+      <h1>User</h1>
     </div>
   );
 }
 
-export { AdminPage };
+export { UserPage };

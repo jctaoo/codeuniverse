@@ -1,11 +1,11 @@
 import React from "react";
 
-function AdminPage() {
+function DashboardPage() {
   return (
     <div id="admin">
-      <h1>Admin</h1>
+      <h1>Home</h1>
     </div>
   );
 }
 
-export { AdminPage };
+export { DashboardPage };
