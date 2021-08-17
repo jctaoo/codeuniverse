@@ -3,6 +3,12 @@ import {
   Collapse,
   Flex,
   HStack,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuGroup,
+  MenuItem,
+  MenuList,
   Popover,
   PopoverArrow,
   PopoverBody,
@@ -10,13 +16,23 @@ import {
   PopoverContent,
   PopoverHeader,
   PopoverTrigger,
-  useDisclosure
+  useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
 import { MobileNavigationItems } from "./MobileNav";
 import { DesktopNavigationItems } from "./DesktopNav";
 import { Logo } from "./Logo";
 import { MobileMenuButton } from "./MobileMenuButton";
+import { useNavigate } from "react-router-dom";
+
+const NavMenuItem = ({ children, to }: { children: string; to: string }) => {
+  const navigate = useNavigate();
+  const jump = () => {
+    navigate(to);
+  }
+  
+  return <MenuItem onClick={jump}>{children}</MenuItem>;
+};
 
 const NavigationBar = () => {
   const displayStyleDesktop = { md: "flex", base: "none" };
@@ -24,7 +40,7 @@ const NavigationBar = () => {
   const {
     isOpen: mobileNavOpen,
     onOpen: openMobileNav,
-    onClose: closeMobileNav
+    onClose: closeMobileNav,
   } = useDisclosure();
 
   const toggleMobileNav = () => {
@@ -38,12 +54,12 @@ const NavigationBar = () => {
   return (
     <>
       <Flex
+        w="100%"
         as="nav"
         className="nav-bar"
         h="10"
         bg="primary"
         alignItems="center"
-        position="sticky"
       >
         <Flex
           w="100%"
@@ -53,29 +69,32 @@ const NavigationBar = () => {
           justifyContent={{ md: "space-between", base: "center" }}
         >
           <HStack paddingLeft={{ md: 7, base: 0 }}>
-            <HStack>
+            <HStack spacing={5}>
               <Logo />
               <DesktopNavigationItems />
             </HStack>
           </HStack>
           <HStack paddingRight="7" display={displayStyleDesktop}>
-            <Popover>
-              <PopoverTrigger>
+            <Menu closeOnBlur>
+              <MenuButton>
                 <Avatar
                   bg="primarySelected"
                   src="https://bit.ly/ryan-florence"
                   size="sm"
                 />
-              </PopoverTrigger>
-              <PopoverContent>
-                <PopoverArrow />
-                <PopoverCloseButton />
-                <PopoverHeader>Confirmation!</PopoverHeader>
-                <PopoverBody>
-                  Are you sure you want to have that milkshake?
-                </PopoverBody>
-              </PopoverContent>
-            </Popover>
+              </MenuButton>
+              <MenuList>
+                <MenuGroup>
+                  <NavMenuItem to="/preferences">Preferences</NavMenuItem>
+                  <NavMenuItem to="/admin/dashboard">Admin</NavMenuItem>
+                  <MenuItem>Sign Out</MenuItem>
+                </MenuGroup>
+                <MenuDivider />
+                <MenuGroup>
+                  <MenuItem>Help</MenuItem>
+                </MenuGroup>
+              </MenuList>
+            </Menu>
           </HStack>
           <MobileMenuButton isOpen={mobileNavOpen} toggle={toggleMobileNav} />
         </Flex>

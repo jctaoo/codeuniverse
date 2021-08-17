@@ -2,8 +2,8 @@ import React from "react";
 
 function DashboardPage() {
   return (
-    <div id="admin">
-      <h1>Home</h1>
+    <div id="dashboard-page">
+      <h1>Dashboard</h1>
     </div>
   );
 }

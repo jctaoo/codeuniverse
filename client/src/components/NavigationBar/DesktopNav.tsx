@@ -26,6 +26,7 @@ const DesktopNavButton = ({
       size="sm"
       variant="ghost"
       color="contrastLabel"
+      fontWeight="bold"
       bg={isActive ? "primarySelected" : "transparent"}
       _hover={{
         bg: isActive ? "primarySelected" : "primaryHover"
@@ -45,7 +46,8 @@ export const DesktopNavigationItems = () => {
   return (
     <HStack display={displayStyleDesktop}>
       <DesktopNavButton to="/">Home</DesktopNavButton>
-      <DesktopNavButton to="/preferences">Preferences</DesktopNavButton>
+      <DesktopNavButton to="/projects">Projects</DesktopNavButton>
+      <DesktopNavButton to="/containers">Containers</DesktopNavButton>
     </HStack>
   );
 };
